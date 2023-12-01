@@ -1,10 +1,16 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { Image, StyleSheet, TouchableOpacity, View, ToastAndroid } from 'react-native';
 
 const ExitScreen = ({ navigation }) => {
+
+    const showExitMess = () => {
+        ToastAndroid.show('Đăng xuất thành công!', ToastAndroid.SHORT);
+        navigation.navigate('Login')
+    };
+
     return (
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <TouchableOpacity onPress={() => showExitMess()}>
                 <Image source={require('../assets/exit.png')} style={styles.img} />
             </TouchableOpacity>
         </View>
@@ -24,4 +30,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ExitScreen
+export default ExitScreen;
