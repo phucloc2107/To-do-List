@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from "react-native";
 import Fallback from '../component/Fallback';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const TodoScreen = () => {
     // Init local states
     const [todo, setTodo] = useState("");
     const [todoList, setTodoList] = useState([]);
     const [editedTodo, setEditedTodo] = useState(null);
+
+    React.useEffect(() => {
+        getTodosFromUserDevice();
+    }, []);
+    React.useEffect(() => {
+        saveTodoTouserDevice(todoList);
+    }, [todoList]);
 
     // Handle Add Todo
     const handleAddTodo = () => {
@@ -46,6 +54,27 @@ const TodoScreen = () => {
         setTodoList(updatedTodos);
         setEditedTodo(null);
         setTodo("");
+    };
+
+    // Use AsyncStorage to save to do in local store
+    const saveTodoTouserDevice = async todoList => {
+        try {
+            const stringifyTodos = JSON.stringify(todoList);
+            await AsyncStorage.setItem('todoList', stringifyTodos);
+        } catch (e) {
+            console.log('Error');
+        }
+    };
+
+    const getTodosFromUserDevice = async () => {
+        try {
+            const todoList = await AsyncStorage.getItem('todoList');
+            if (todoList != null) {
+                setTodoList(JSON.parse(todoList));
+            }
+        } catch (e) {
+            console.log('error');
+        }
     };
 
     // Render todo
