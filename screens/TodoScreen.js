@@ -36,14 +36,12 @@ const TodoScreen = () => {
     };
 
     // Handle Edit todo
-
     const handleEditTodo = (todo) => {
         setEditedTodo(todo);
         setTodo(todo.title);
     };
 
     // Handle Update
-
     const handleUpdateTodo = () => {
         const updatedTodos = todoList.map((item) => {
             if (item.id === editedTodo.id) {
@@ -134,7 +132,7 @@ const TodoScreen = () => {
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: 16,
-        marginTop: 40
+        marginTop: 40,
     },
     textInput: {
         borderWidth: 2,

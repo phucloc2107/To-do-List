@@ -14,7 +14,7 @@ const LogInScreen = ({ navigation, props }) => {
         <TouchableWithoutFeedback onPress={() => setShowPassword(!showPassword)}>
             <Icon
                 {...props}
-                name={!showPassword ? 'eye-outline' : 'eye-off-outline'}
+                name={!showPassword ? 'eye-off-outline' : 'eye-outline'}
             />
         </TouchableWithoutFeedback>
     );
@@ -29,12 +29,10 @@ const LogInScreen = ({ navigation, props }) => {
                 <Input
                     style={styles.TextInput}
                     placeholder='Email'
-                    color='black'
                 />
                 <Input
                     style={styles.TextInput}
                     placeholder='Mật khẩu'
-                    color='black'
                     secureTextEntry={!showPassword}
                     accessoryRight={showPasswordIcon}
                 />
@@ -50,12 +48,12 @@ const LogInScreen = ({ navigation, props }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#6690FF',
+        backgroundColor: '#ef7d08',
         justifyContent: 'center',
         alignItems: 'center'
     },
     LoginForm: {
-        backgroundColor: '#ADC8FF',
+        backgroundColor: '#FAC069',
         borderWidth: 1,
         borderRadius: 15,
         width: '70%',
@@ -69,12 +67,13 @@ const styles = StyleSheet.create({
         color: 'black'
     },
     TextInput: {
-        backgroundColor: '###D6E4FF',
+        backgroundColor: '#F9FCFD',
         margin: 10,
         color: 'black',
     },
     button: {
         width: '60%',
+        backgroundColor: 'black',
     },
 })
 
